@@ -1,4 +1,4 @@
-package com.uzair.composeBase.data.room_database
+package com.uzair.composeBase.data.genericModelClasses
 
 data class ResponseError(
     val message: String?,

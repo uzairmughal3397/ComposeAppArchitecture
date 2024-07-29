@@ -1,20 +1,13 @@
 package com.uzair.composeBase.utils
 
-import com.uzair.composeBase.data.room_database.ResponseError
+import com.uzair.composeBase.data.genericModelClasses.ResponseError
 
 
 sealed class Resource<out T> {
 
     class Loading<T> : Resource<T>()
     data class Success<T>(val data: T) : Resource<T>()
-    data class Error<T>(val status: Status, val data: T?, val message: String?,val responseError: ResponseError?) : Resource<T>()
-
-    enum class Status {
-        SUCCESS,
-        ERROR,
-        LOADING
-    }
-
+    data class Error<T>( val data: T?, val message: String?,val responseError: ResponseError?) : Resource<T>()
 
     companion object {
 
@@ -35,10 +28,8 @@ sealed class Resource<out T> {
          * @param message Description of failure.
          */
         fun <T> error(message: String, data: T? = null, responseError: ResponseError?) =
-            Error<T>(Status.ERROR, data, message,responseError)
+            Error<T>( data, message,responseError)
 
     }
-
-
 
 }

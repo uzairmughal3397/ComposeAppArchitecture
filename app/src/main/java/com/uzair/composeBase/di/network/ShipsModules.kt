@@ -1,6 +1,6 @@
 package com.uzair.composeBase.di.network
 
-import com.uzair.composeBase.domain.remote.ship_service.ShipService
+import com.uzair.composeBase.domain.remote.ship_service.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +16,8 @@ object ShipsModules {
 
     @Provides
     @Singleton
-    fun getShipsList(retrofit: Retrofit): ShipService {
-        return retrofit.create(ShipService::class.java)
+    fun getShipsList(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 
     @Provides

@@ -5,9 +5,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.uzair.composeBase.compose.launcher_screen.LauncherScreen
-import com.uzair.composeBase.compose.ship_details_screen.ShipDetailContainer
-import com.uzair.composeBase.compose.ships_screen.ShipsScreen
+import com.uzair.composeBase.ui.screens.launcher_screen.LauncherScreen
+import com.uzair.composeBase.ui.screens.ship_details_screen.ShipDetailContainer
+import com.uzair.composeBase.ui.screens.ships_screen.ShipsScreen
 import kotlinx.serialization.Serializable
 
 @Composable

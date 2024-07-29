@@ -1,4 +1,4 @@
-package com.uzair.composeBase.compose.ship_details_screen
+package com.uzair.composeBase.ui.screens.ship_details_screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

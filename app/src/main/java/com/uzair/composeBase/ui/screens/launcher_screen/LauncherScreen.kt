@@ -1,4 +1,4 @@
-package com.uzair.composeBase.compose.launcher_screen
+package com.uzair.composeBase.ui.screens.launcher_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

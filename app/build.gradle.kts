@@ -36,6 +36,7 @@ android {
             )
         }
         debug {
+            isDebuggable=true
             isShrinkResources = true
             isMinifyEnabled = true
             proguardFiles(

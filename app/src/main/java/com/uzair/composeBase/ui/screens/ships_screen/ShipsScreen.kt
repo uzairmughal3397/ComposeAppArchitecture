@@ -1,4 +1,4 @@
-package com.uzair.composeBase.compose.ships_screen
+package com.uzair.composeBase.ui.screens.ships_screen
 
 import android.content.Context
 import android.widget.Toast
@@ -43,6 +43,7 @@ import com.uzair.composeBase.compose.generic_compose_views.CustomToolbar
 import com.uzair.composeBase.compose.generic_compose_views.ShowDialog
 import com.uzair.composeBase.compose.generic_compose_views.StartDefaultLoader
 import com.uzair.composeBase.compose.navigation.NavigateTo
+import com.uzair.composeBase.data.genericModelClasses.ResponseTemplate
 import com.uzair.composeBase.data.room_database.ships.ShipsModel
 import com.uzair.composeBase.utils.Resource
 import com.uzair.composeBase.utils.extensions.getProgressDrawable
@@ -52,6 +53,12 @@ import kotlinx.coroutines.Dispatchers
 fun ShipsScreen(navigateTo: (NavigateTo, String) -> Unit) {
     val shipsViewModel: ShipsViewModel = hiltViewModel()
     val shipUi=shipsViewModel.shipsModelStateFlow.collectAsState().value
+    when(shipUi){
+        is Resource.Success->{
+        shipsViewModel.addToDatabase(shipUi.data)
+        }
+        else->{}
+    }
     Scaffold(
         containerColor = Color.Black,
         topBar = {

@@ -146,7 +146,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:$composeHiltNavigationVersion")
     implementation ("com.airbnb.android:lottie-compose:$lottieVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$jsonSerializable")
-    implementation("androidx.datastore:datastore-preferences-core:$dataStoreVersion")
+    implementation("androidx.datastore:datastore-preferences:$dataStoreVersion")
     implementation("androidx.datastore:datastore-core:$dataStoreVersion")
 
 

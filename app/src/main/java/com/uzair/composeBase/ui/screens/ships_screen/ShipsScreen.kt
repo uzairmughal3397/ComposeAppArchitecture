@@ -23,6 +23,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -43,21 +45,23 @@ import com.uzair.composeBase.compose.generic_compose_views.CustomToolbar
 import com.uzair.composeBase.compose.generic_compose_views.ShowDialog
 import com.uzair.composeBase.compose.generic_compose_views.StartDefaultLoader
 import com.uzair.composeBase.compose.navigation.NavigateTo
-import com.uzair.composeBase.data.genericModelClasses.ResponseTemplate
 import com.uzair.composeBase.data.room_database.ships.ShipsModel
+import com.uzair.composeBase.datastore.DataStoreProvider
 import com.uzair.composeBase.utils.Resource
 import com.uzair.composeBase.utils.extensions.getProgressDrawable
 import kotlinx.coroutines.Dispatchers
 
 @Composable
 fun ShipsScreen(navigateTo: (NavigateTo, String) -> Unit) {
+    val context= LocalContext.current
     val shipsViewModel: ShipsViewModel = hiltViewModel()
-    val shipUi=shipsViewModel.shipsModelStateFlow.collectAsState().value
-    when(shipUi){
-        is Resource.Success->{
-        shipsViewModel.addToDatabase(shipUi.data)
+    val shipUi = shipsViewModel.shipsModelStateFlow.collectAsStateWithLifecycle().value
+    when (shipUi) {
+        is Resource.Success -> {
+            shipsViewModel.addToDatabase(shipUi.data)
         }
-        else->{}
+
+        else -> {}
     }
     Scaffold(
         containerColor = Color.Black,
@@ -65,7 +69,7 @@ fun ShipsScreen(navigateTo: (NavigateTo, String) -> Unit) {
             CustomToolbar(stringResource(R.string.list_of_ships))
         },
         content = { paddingValue ->
-            ListOfShips(navigateTo, paddingValues = paddingValue,shipUi)
+            ListOfShips(navigateTo, paddingValues = paddingValue, shipUi)
         })
 }
 

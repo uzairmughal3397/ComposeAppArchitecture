@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -40,7 +41,7 @@ fun ShipDetailContainer(
     val viewModel = hiltViewModel<ShipDetailsViewModel>()
     viewModel.queryShipById(shipId)
 
-    val uiState = viewModel.shipDetails.collectAsState().value
+    val uiState = viewModel.shipDetails.collectAsStateWithLifecycle().value
     if (uiState!=null) {
         ShipDetailsScreen(
             shipId = shipId,

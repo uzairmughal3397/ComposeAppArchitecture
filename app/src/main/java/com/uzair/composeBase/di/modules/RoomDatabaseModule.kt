@@ -30,8 +30,5 @@ object RoomDatabaseModule {
         }
     }
 
-    @Singleton
-    @Provides
-    fun provideDao(db: AppDatabase) = db.myRoomDatabase
 
 }

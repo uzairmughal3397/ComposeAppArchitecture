@@ -33,7 +33,7 @@
 #-keep class com.google.gson.stream.** { *; }
 
 # Application classes that will be serialized/deserialized over Gson
--keep class com.uzair.composeBase.data.room_database.ships.** { <fields>; }
+-keep class com.uzair.composeBase.data.roomDatabase.ships.** { <fields>; }
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
 # JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
